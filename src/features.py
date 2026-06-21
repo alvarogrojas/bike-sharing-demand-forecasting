@@ -72,7 +72,7 @@ def build_preprocessing() -> Pipeline:
     """Build the full preprocessing pipeline (feature engineering + encoding).
 
     Fitting happens inside cross-validation/training, so each fold is preprocessed
-    using only its own training data — no leakage from validation or test folds.
+    using only its own training data - no leakage from validation or test folds.
     """
     column_transformer = ColumnTransformer(
         [

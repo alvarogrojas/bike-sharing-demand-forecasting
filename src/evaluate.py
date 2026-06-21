@@ -2,7 +2,7 @@
 
 Provides both an **absolute** error metric (RMSE, in bikes) and a **relative**
 one (MAPE, in %), plus a bootstrap confidence interval for the RMSE. The two
-metrics tell different stories on a heavy-tailed target — see the README.
+metrics tell different stories on a heavy-tailed target - see the README.
 """
 
 import numpy as np
@@ -54,7 +54,7 @@ def error_by_segment(X_test, y_test, y_pred, column: str) -> pd.DataFrame:
     """RMSE / MAPE / mean demand broken down by the values of ``column``.
 
     Reveals *where* the model is strong or weak (e.g. peak vs off-peak hours,
-    working days vs weekends) — a global metric hides this.
+    working days vs weekends) - a global metric hides this.
     """
     res = pd.DataFrame(
         {"segment": np.asarray(X_test[column]), "actual": np.asarray(y_test), "pred": np.asarray(y_pred)}
