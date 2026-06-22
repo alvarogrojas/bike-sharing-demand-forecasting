@@ -130,19 +130,36 @@ bike-sharing-demand-forecasting/
 
 ## Reproduce it
 
+All commands run from the **repository root** (so the `src` package resolves):
+
 ```bash
-# 1. Install dependencies
+# 0. (first time only) install dependencies
 pip install -r requirements.txt
 
-# 2. Train the final model and print the test-set metrics
+# 1. Train the final model and print the test-set metrics
 python reproduce.py
 
-# 3. (optional) Inspect predicted vs. actual demand for a sample day
+# 2. (optional) Inspect predicted vs. actual demand for a sample day
 python predict.py
 ```
 
-Run both from the repository root so the `src` package resolves. The full
-narrated analysis lives in [`notebooks/01_analysis.ipynb`](notebooks/01_analysis.ipynb).
+`reproduce.py` trains the tuned Gradient Boosting model, saves it to
+`models/model.joblib`, and prints:
+
+```
+Test-set performance
+--------------------------------
+RMSE      : 70.0 bikes/hour
+RMSE 95%CI: [66.7, 73.9]
+R^2       : 0.899
+MAPE      : 56%
+```
+
+`predict.py` loads that saved model and prints predicted vs. actual demand, hour
+by hour, for one day of the held-out test set.
+
+The full narrated analysis lives in
+[`notebooks/01_analysis.ipynb`](notebooks/01_analysis.ipynb).
 
 ## Limitations & next steps
 
